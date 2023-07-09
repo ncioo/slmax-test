@@ -10,9 +10,16 @@ const messageSchema = new Schema({
 	createdAt: { type: Date, default: Date.now }
 });
 
-messageSchema.statics.getMessages = async function (chatId) {
+messageSchema.statics.getMessages = async function (filter = {}) {
+	let findOrder = {};
+
+	if (filter?.chatId) findOrder.chatId = filter?.chatId;
+	if (filter?.searchString)
+		findOrder.content = { $regex: `${filter?.searchString}`, $options: 'i' };
+	if (!filter?.showDeleted) findOrder.deleted = false;
+
 	const result = await model('Message').aggregate([
-		{ $match: { chatId: chatId, deleted: false } },
+		{ $match: findOrder },
 		{ $lookup: { from: 'users', localField: 'authorId', foreignField: '_id', as: 'author' } },
 		{ $set: { author: { $first: '$author' } } }
 	]);
