@@ -11,7 +11,7 @@ module.exports = async function (io, socket, data) {
 	try {
 		const result = await model('Chat').createChat(name, session.user);
 
-		io.emit(eventTypes.NEW_CHAT, {
+		io.emit(eventTypes.CHAT_CREATED, {
 			chat: result,
 			user: session.user
 		});

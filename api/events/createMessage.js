@@ -11,7 +11,7 @@ module.exports = async function (io, socket, data) {
 	try {
 		const result = await model('Message').createMessage(chatId, session.user, content, file);
 
-		io.emit(eventTypes.NEW_MESSAGE, {
+		io.emit(eventTypes.MESSAGE_CREATED, {
 			user: session.user,
 			content: result.content,
 			attachment: result.fileURL

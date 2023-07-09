@@ -4,11 +4,11 @@ module.exports = {
 	ERROR: 'error',
 	LOAD_SESSION: 'loadSession',
 	CREATE_CHAT: 'createChat',
-	NEW_CHAT: 'newChat',
-	CREATE_MESSAGE: 'createMessage',
+	CHAT_CREATED: 'chatCreated',
 	DELETE_CHAT: 'deleteChat',
 	CHAT_DELETED: 'chatDeleted',
-	NEW_MESSAGE: 'newMesasge',
+	CREATE_MESSAGE: 'createMessage',
+	MESSAGE_CREATED: 'messageCreated',
 	DELETE_MESSAGE: 'deleteMessage',
 	MESSAGE_DELETED: 'messageDeleted'
 };
