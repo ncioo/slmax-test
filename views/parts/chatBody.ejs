@@ -1,0 +1,12 @@
+<li class="chat-label-body">
+    <a class="chat-label" href="/chat/<%= data.id %>">
+        <span class="chat-name" name="chat-name">
+            <%= data.name %>
+        </span>
+        <span class="chat-id" name="chat-id">
+            <%= data._id %>
+        </span>
+        <span class="chat-members" name="chat-members">Members: <%= data.members.length %></span>
+    </a>
+    <button class="delete-chat" onclick="deleteChat('<%=data._id %>')">Delete this chat</button>
+</li>

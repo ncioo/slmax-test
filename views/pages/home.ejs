@@ -1,0 +1,66 @@
+<% layout('layouts/main') -%>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col col-auto">
+                    <div class="row">
+                        <ul id="chats">
+                            <% chats.forEach((chat, index)=> { %>
+                                <%- include('../parts/chatBody', { data: chat }) %>
+                                    <% }) %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-md-6">
+                    <div class="row" id="messages-field">
+                        <ul id="chat-messages">
+                            <% messages.forEach((message, index)=> { %>
+                                <%- include('../parts/messageBody', { data: message }) %>
+                                    <% }) %>
+                        </ul>
+                    </div>
+                    <div class="row" id="input-field">
+                        <form id="message-form" action="">
+                            <input id="message-content" type="text"><input id="message-file"
+                                type="file"><button>Send</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col col-auto">
+                    <div class="row" id="login-field">
+                        <form id="login-form" action="">
+                            Login form
+                            <input id="login-email" placeholder="login" style="display: block;">
+                            <input id="login-password" placeholder="password" style="display: block;">
+                            <button>Login</button>
+                        </form>
+                    </div>
+                    <div class="row" style="height: 20px;"></div>
+                    <div class="row" id="register-field">
+                        <form id="register-form" action="">
+                            Register form
+                            <input id="register-username" placeholder="username" style="display: block;">
+                            <input id="register-email" placeholder="login" style="display: block;">
+                            <input id="register-password" placeholder="password" style="display: block;">
+                            <button>Login</button>
+                        </form>
+                    </div>
+                    <div class="row" style="height: 20px;"></div>
+                    <div class="row" id="logout-field">
+                        <form id="logout-form" action="">
+                            Logout form
+                            <button>Logout</button>
+                        </form>
+                    </div>
+                    <div class="row" style="height: 20px;"></div>
+                    <div class="row" id="create-chat-field">
+                        <form id="create-chat-form" action="">
+                            Create chat form
+                            <input id="create-chat-name" placeholder="Chat name" style="display: block;">
+                            <button>Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

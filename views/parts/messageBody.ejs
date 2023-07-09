@@ -1,0 +1,18 @@
+<li class="message-body">
+    <div class="message">
+        <span class="message-author" name="message-author">
+            <%= data.author.username %>
+        </span>
+        <button class="delete-message" onclick="deleteMessage('<%=data._id %>')">Delete this message</button>
+        <span class="message-content" name="message-content">
+            <%= data.content %>
+        </span>
+        <% if (data.attachment) { %>
+            <% let attachmentName=data.attachment.replace('/static/uploads/', '' ) %>
+                <a class="message-attachment" name="message-content" href="http://localhost:8080<%= data.attachment %>"
+                    download="<%= attachmentName %>">
+                    Attachment: <%= attachmentName %>
+                </a>
+                <% } %>
+    </div>
+</li>
