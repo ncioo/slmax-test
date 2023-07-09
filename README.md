@@ -2,8 +2,8 @@
 
 Основной стэк:
 
--   ejs
--   express
+-   ejs, ejs-mate
+-   express, express-sessions
 -   socket.io
 -   mongoose
 -   passport
