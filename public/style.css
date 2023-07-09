@@ -9,34 +9,34 @@ header .navbar {
 	color: #efefef;
 }
 
-body .container-fluid .container .row {
+.container-fluid .container .row {
 	margin: 5px;
 }
 
-body .container-fluid .container .row .col {
+.container-fluid .container .row .col {
 	margin: 0 5px;
 	padding: 5px;
-	height: 93vh;
+	height: 92vh;
 	position: relative;
 	top: 0;
 	border: 1px solid black;
 	border-radius: 10px;
 }
 
-body #chats {
+#chats {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-body .chat-label-body {
+.chat-label-body {
 	margin: 10px 0;
 	padding: 5px;
 	border: 1px solid black;
 	border-radius: 10px;
 }
 
-body .chat-label {
+.chat-label {
 	display: block;
 	width: 100%;
 	padding: 4px 10px;
@@ -44,47 +44,69 @@ body .chat-label {
 	text-decoration: none;
 }
 
-body .delete-chat {
+.delete-chat {
 	display: block;
 	border: 1px solid black;
 	border-radius: 10px;
 	width: 100%;
 }
 
-body .chat-label .chat-name {
+.chat-label .chat-name {
 	display: block;
 	font-size: 18px;
 	color: black;
 }
 
-body .chat-label .chat-members {
+.chat-label .chat-members,
+.chat-label .chat-id {
 	display: block;
 	font-size: 14px;
 	color: #a0a0a0;
 }
 
-body .chat-label .chat-id {
-	display: block;
-	font-size: 14px;
-	color: #a0a0a0;
+#search-message-field {
+	margin: 10px;
+	padding: 0;
 }
 
-body #chat-messages {
+#search-message-form {
 	margin: 0;
 	padding: 0;
-	list-style: none;
-	width: 99%;
+	width: 100%;
 }
 
-body #messages-field {
-	height: 88%;
+#search-message-form #search-message-content {
+	margin: 4px 6px;
+	padding: 5px;
+	width: 86%;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+#search-message-form button {
+	margin: 4px 6px;
+	padding: 5px;
+	width: 10%;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+#messages-field {
+	height: 80%;
 	margin: 10px;
 	padding: 10px 0 10px 10px;
 	overflow-y: scroll;
 	border: 1px solid black;
 }
 
-body .message-body {
+#chat-messages {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 99%;
+}
+
+.message-body {
 	margin: 12px 8px;
 	padding: 12px;
 	border: 1px solid black;
@@ -92,13 +114,13 @@ body .message-body {
 	border-radius: 10px;
 }
 
-body #chat-messages .message-author {
+#chat-messages .message-author {
 	display: inline-block;
 	width: 20%;
 	text-align: center;
 }
 
-body #chat-messages .message-content {
+#chat-messages .message-content {
 	display: inline-block;
 	width: 100%;
 	margin: 4px 0;
@@ -107,7 +129,7 @@ body #chat-messages .message-content {
 	border-radius: 10px;
 }
 
-body #chat-messages .message-attachment {
+#chat-messages .message-attachment {
 	display: inline-block;
 	color: white;
 	text-decoration: none;
@@ -117,23 +139,32 @@ body #chat-messages .message-attachment {
 	width: 100%;
 }
 
-body .delete-message {
+.delete-message {
 	border: 1px solid black;
 	border-radius: 10px;
 }
 
-body #login-field {
+#login-field,
+#register-field,
+#logout-field,
+#create-chat-field {
 	padding: 8px;
 	border: 1px solid black;
 	border-radius: 10px;
 }
 
-body #login-form {
+#login-form,
+#register-form,
+#logout-form,
+#create-chat-form {
 	margin: 0;
 	padding: 0;
 }
 
-body #login-form input {
+#login-form input,
+#register-form input,
+#logout-form button,
+#create-chat-form input {
 	margin: 10px 0;
 	padding: 5px;
 	border: 1px solid black;
@@ -141,95 +172,28 @@ body #login-form input {
 	width: 100%;
 }
 
-body #login-form button {
+#login-form button,
+#register-form button,
+#logout-form button,
+#create-chat-form button {
 	border: 1px solid black;
 	border-radius: 10px;
 	width: 100%;
 }
 
-body #register-field {
-	padding: 8px;
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
-body #register-form {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-body #register-form input {
-	margin: 10px 0;
-	padding: 5px;
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 100%;
-}
-
-body #register-form button {
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 100%;
-}
-
-body #logout-field {
-	padding: 8px;
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
-body #logout-form {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-body #logout-form button {
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 100%;
-}
-
-body #create-chat-field {
-	padding: 8px;
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
-body #create-chat-form {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-body #create-chat-form input {
-	margin: 10px 0;
-	padding: 5px;
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 100%;
-}
-
-body #create-chat-form button {
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 100%;
-}
-
-body #input-field {
+#input-field {
 	height: 12%;
 	margin: 10px;
 	padding: 0;
 }
 
-body #message-form {
+#message-form {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 }
 
-body #message-form #message-content {
+#message-form #message-content {
 	margin: 4px 6px;
 	padding: 5px;
 	width: 98%;
@@ -237,7 +201,7 @@ body #message-form #message-content {
 	border-radius: 10px;
 }
 
-body #message-form #message-file {
+#message-form #message-file {
 	margin: 4px 6px;
 	padding: 5px;
 	width: 86%;
@@ -245,7 +209,7 @@ body #message-form #message-file {
 	border-radius: 10px;
 }
 
-body #message-form button {
+#message-form button {
 	margin: 4px 6px;
 	padding: 5px;
 	width: 10%;

@@ -4,11 +4,11 @@ const events = {
 	ERROR: 'error',
 	LOAD_SESSION: 'loadSession',
 	CREATE_CHAT: 'createChat',
-	NEW_CHAT: 'newChat',
-	CREATE_MESSAGE: 'createMessage',
+	CHAT_CREATED: 'chatCreated',
 	DELETE_CHAT: 'deleteChat',
 	CHAT_DELETED: 'chatDeleted',
-	NEW_MESSAGE: 'newMesasge',
+	CREATE_MESSAGE: 'createMessage',
+	MESSAGE_CREATED: 'messageCreated',
 	DELETE_MESSAGE: 'deleteMessage',
 	MESSAGE_DELETED: 'messageDeleted'
 };
@@ -46,7 +46,7 @@ messageForm.addEventListener('submit', function (e) {
 	}
 });
 
-socket.on(events.NEW_MESSAGE, function (data) {
+socket.on(events.MESSAGE_CREATED, function (data) {
 	const { user, content } = data;
 
 	window.location.reload();
@@ -65,7 +65,20 @@ createChatForm.addEventListener('submit', function (e) {
 	}
 });
 
-socket.on(events.NEW_CHAT, function (data) {
+var searchMessageForm = document.getElementById('search-message-form');
+searchMessageForm.addEventListener('submit', function (e) {
+	e.preventDefault();
+
+	var searchMessageInput = document.getElementById('search-message-content');
+
+	if (searchMessageInput.value) {
+		window.location.href += '?searchString=' + searchMessageInput.value;
+	} else {
+		window.location.href = window.location.href.split('?')[0];
+	}
+});
+
+socket.on(events.CHAT_CREATED, function (data) {
 	const { chat } = data;
 
 	alert(`Chat ${chat.name} created!`);

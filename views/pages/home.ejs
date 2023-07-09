@@ -12,6 +12,12 @@
                     </div>
                 </div>
                 <div class="col col-md-6">
+                    <div class="row" id="search-message-field">
+                        <form id="search-message-form" action="">
+                            <input id="search-message-content" type="text"
+                                placeholder="Type some message content"><button>Search</button>
+                        </form>
+                    </div>
                     <div class="row" id="messages-field">
                         <ul id="chat-messages">
                             <% messages.forEach((message, index)=> { %>
@@ -21,8 +27,8 @@
                     </div>
                     <div class="row" id="input-field">
                         <form id="message-form" action="">
-                            <input id="message-content" type="text"><input id="message-file"
-                                type="file"><button>Send</button>
+                            <input id="message-content" type="text" placeholder="Type some message content"><input
+                                id="message-file" type="file"><button>Send</button>
                         </form>
                     </div>
                 </div>
