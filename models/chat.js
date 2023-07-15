@@ -3,6 +3,7 @@ const { UserNotAllowedError, NotFoundError } = require('../api/errors');
 
 //	Создаем схему чата
 const chatSchema = new Schema({
+	//	Название чата
 	name: String,
 	//	ID создателя чата
 	ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -46,10 +47,11 @@ chatSchema.statics.deleteOrRestoreChat = async function (chatId, user) {
 		throw new NotFoundError('There is no chat with this ID');
 	}
 
-	//	Если создатель чата - не пользователь, который хочет его удалить, возвращаем ошибку
+	//	Если пользователь, который хочет удалить чат - не его создатель, возвращаем ошибку
 	if (!target.ownerId.equals(user._id))
 		throw new UserNotAllowedError('You cannot delete this chat');
 
+	//	Проходимся по сообщениям этого чата и тоже их удаляем
 	await model('Message').updateMany({ chatId: target._id }, { deleted: !target.deleted });
 
 	//	Меняем флаг удаленности на противоположный

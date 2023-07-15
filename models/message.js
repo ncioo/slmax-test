@@ -27,10 +27,10 @@ messageSchema.statics.getMessages = async function (filter = {}) {
 		findOrder.chatId = filter?.chatId;
 	if (filter?.searchString)
 		//	Если передана строка поиска, то добавляем её в объект поиска
-		//	Ищем совпадения с игнорированием регистра и в любой части контента
+		//	Ищем совпадения с игнорированием регистра и в любой части контента сообщения
 		findOrder.content = { $regex: `${filter?.searchString}`, $options: 'i' };
 	if (!filter?.showDeleted)
-		//	Если не передан флаг удаленности, то по-умолчанию отображаем только НЕ удаленные сообщения
+		//	Если не передан флаг удаленности то по-умолчанию отображаем только НЕ удаленные сообщения
 		findOrder.deleted = false;
 
 	const result = await model('Message').aggregate([
@@ -50,6 +50,7 @@ messageSchema.statics.getMessages = async function (filter = {}) {
 		{ $set: { author: { $first: '$author' } } }
 	]);
 
+	//	Возвращаем массив сообщений
 	return result;
 };
 
@@ -96,7 +97,7 @@ messageSchema.statics.deleteOrRestoreMessage = async function (messageId, user) 
 		throw new NotFoundError('There is no message with this ID');
 	}
 
-	//	Если автор сообщения - не пользователь, который хочет его удалить, возвращаем ошибку
+	//	Если пользователь, который хочет удалить сообщение - не его автор, возвращаем ошибку
 	if (!target.authorId.equals(user._id))
 		throw new UserNotAllowedError('You cannot delete this message');
 

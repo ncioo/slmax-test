@@ -10,7 +10,7 @@ const randomString = require('./randomString');
 module.exports = async function (file, username) {
 	const fileInfo = await fileType.fromBuffer(file);
 
-	//	Получаем расширения файла
+	//	Получаем расширение файла
 	let ext = fileInfo.ext,
 		//	Формируем имя файла из имени пользователя,
 		//	временной метки и случайной строки

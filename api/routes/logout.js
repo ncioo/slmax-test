@@ -3,8 +3,9 @@ module.exports = function (req, res) {
 	req.logout(() => {
 		//	Удаляем объект пользователя из сессии
 		req.session.user = null;
+
+		//	Возвращаем флаг об успешном выполнении запроса
 		res.json({
-			//	Возвращаем флаг об успешном выполнении запроса
 			success: true
 		});
 	});

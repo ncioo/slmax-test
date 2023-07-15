@@ -21,8 +21,7 @@ module.exports = async function (req, res) {
 	res.render('pages/home', {
 		//	Заголовок страницы
 		title: 'Chat: ' + chat.name,
-		//	Статичная ссылка севрера. Нужна для правильной
-		//	подгрузки файлов из /public
+		//	Статичная ссылка сервера. Нужна для правильной подгрузки файлов из /public
 		serverURL,
 		//	Массив всех существующих чатов
 		chats: chats,

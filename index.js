@@ -32,7 +32,7 @@ const sessionMiddleware = session({
 	saveUninitialized: false
 });
 
-//	настраиваем ejs и ejs-mate как движок для рендера страниц
+//	Настраиваем ejs и ejs-mate как движок для рендера страниц
 app.engine('ejs', require('ejs-mate'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

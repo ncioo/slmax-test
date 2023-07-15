@@ -1,7 +1,7 @@
 const CHARS = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
 
 /**
- * Функция создания случайной строки заданной длинны
+ * Создает случайные строки заданной длинны
  * @param {*} length - Длинна строки
  */
 function randomString(length) {

@@ -16,7 +16,7 @@ const userSchema = new Schema({
 	createdAt: { type: Date, default: Date.now }
 });
 
-//	Добавляем плагин из passportLocalMongoose в схему пользователя
+//	Добавляем плагин из passport-local-mongoose в схему пользователя
 userSchema.plugin(passportLocalMongoose, { usernameQueryFields: ['username', 'email'] });
 
 //	Создаем статичный метод создания пользователя
@@ -29,7 +29,7 @@ userSchema.statics.createAccount = async function (username, email, password) {
 	//	Хешируем пароль и сохраняем нового пользователя в базу
 	await this.register(user, password);
 
-	//	Возвращаем нового ползователя
+	//	Возвращаем нового пользователя
 	return user;
 };
 

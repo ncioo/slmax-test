@@ -15,7 +15,7 @@ module.exports = async function (io, socket, data) {
 
 	try {
 		//	Вызываем функцию создания из модели Message и передаем
-		//	ID чата, пользователя из сессииб контент сообщения и буфер файла
+		//	ID чата, пользователя из сессии, контент сообщения и буфер файла
 		const result = await model('Message').createMessage(chatId, session.user, content, file);
 
 		//	Вызываем событие на клиенте о том, что создано новое сообщение

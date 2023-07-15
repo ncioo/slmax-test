@@ -7,13 +7,12 @@ module.exports = async function (req, res) {
 	//	Аутентификация пользователя через модель User
 	const { user, error } = await model('User').authenticate()(email, password);
 
-	//	Проверяем на наличие ошибки
 	if (error) {
 		if (error.name === 'IncorrectUsernameError' || error.name === 'IncorrectPasswordError') {
-			//	Возвращаем ошибку если неверный логин или пароль
+			//	Возвращаем ошибку если введены неверный логин или пароль
 			res.json({
 				success: false,
-				error: 'Неверный логин или пароль'
+				error: 'Incorrect login or password'
 			});
 		} else {
 			//	Возвращаем ошибку если что-то пошло не так
