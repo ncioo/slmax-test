@@ -47,22 +47,9 @@ messageForm.addEventListener('submit', function (e) {
 });
 
 socket.on(events.MESSAGE_CREATED, function (data) {
-	const { user, content } = data;
+	const { message, user } = data;
 
 	window.location.reload();
-});
-
-var createChatForm = document.getElementById('create-chat-form');
-createChatForm.addEventListener('submit', function (e) {
-	e.preventDefault();
-
-	var chatNameInput = document.getElementById('create-chat-name');
-
-	if (chatNameInput.value) {
-		socket.emit(events.CREATE_CHAT, {
-			name: chatNameInput.value
-		});
-	}
 });
 
 var searchMessageForm = document.getElementById('search-message-form');
@@ -78,8 +65,21 @@ searchMessageForm.addEventListener('submit', function (e) {
 	}
 });
 
+var createChatForm = document.getElementById('create-chat-form');
+createChatForm.addEventListener('submit', function (e) {
+	e.preventDefault();
+
+	var chatNameInput = document.getElementById('create-chat-name');
+
+	if (chatNameInput.value) {
+		socket.emit(events.CREATE_CHAT, {
+			name: chatNameInput.value
+		});
+	}
+});
+
 socket.on(events.CHAT_CREATED, function (data) {
-	const { chat } = data;
+	const { chat, user } = data;
 
 	alert(`Chat ${chat.name} created!`);
 	window.location.reload();
@@ -90,7 +90,7 @@ function deleteChat(chatId) {
 }
 
 socket.on(events.CHAT_DELETED, function (data) {
-	const { chat } = data;
+	const { chat, user } = data;
 
 	alert(`Chat ${chat.name} deleted!`);
 	window.location.reload();
