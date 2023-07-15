@@ -1,5 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 const { uploadFile } = require('../api/utils');
+const { UserNotAllowedError, NotFoundError } = require('../api/errors');
 
 const messageSchema = new Schema({
 	authorId: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -29,6 +30,11 @@ messageSchema.statics.getMessages = async function (filter = {}) {
 
 messageSchema.statics.createMessage = async function (chatId, user, content, file) {
 	const chat = await model('Chat').findById(new Types.ObjectId(chatId));
+
+	if (!chat) {
+		throw new NotFoundError('There is no chat with this ID');
+	}
+
 	let attachment = null;
 
 	if (!chat.members.includes(user._id)) await model('Chat').addMember(chat, user);
@@ -47,8 +53,15 @@ messageSchema.statics.createMessage = async function (chatId, user, content, fil
 	return newMessage;
 };
 
-messageSchema.statics.deleteOrRestoreMessage = async function (messageId) {
+messageSchema.statics.deleteOrRestoreMessage = async function (messageId, user) {
 	const target = await model('Message').findById(new Types.ObjectId(messageId));
+
+	if (!target) {
+		throw new NotFoundError('There is no message with this ID');
+	}
+
+	if (!target.authorId.equals(user._id))
+		throw new UserNotAllowedError('You cannot delete this message');
 
 	target.deleted = !target.deleted;
 	return target.save();
