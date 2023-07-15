@@ -1,3 +1,4 @@
+//	Перечисление названий всех задействованных событий
 module.exports = {
 	CONNECTION: 'connection',
 	DISCONNECT: 'disconnect',

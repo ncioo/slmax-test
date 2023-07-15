@@ -1,3 +1,4 @@
+//  Класс кастомной ошибки
 class OperationError extends Error {
 	constructor(message) {
 		super(message);
@@ -8,6 +9,7 @@ class OperationError extends Error {
 	}
 }
 
+//  Класс ошибки UserNotAllowed
 class UserNotAllowedError extends OperationError {
 	constructor(message) {
 		super(message);
@@ -16,6 +18,7 @@ class UserNotAllowedError extends OperationError {
 	}
 }
 
+//  Класс ошибки NotFound
 class NotFoundError extends OperationError {
 	constructor(message) {
 		super(message);
